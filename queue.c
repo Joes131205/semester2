@@ -11,6 +11,8 @@ Example: People lining up for an amusement park ride.
 
 0 -> 1 -> 2 -> 3       (After removing the first element again)
 
+This is called FIFO (First In, First Out).
+
 The queue can be implemented using various data structures, such as a linked list or an array.
 */
 
