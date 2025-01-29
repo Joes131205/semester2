@@ -1,3 +1,16 @@
+/*
+Concept:
+A Doubly (Double) Linked List is a dynamic data structure where each element (node) contains a value and two pointers:
+one pointing to the next node and one pointing to the previous node. This allows traversal in both directions.
+
+Example:
+
+NULL <- [10] <-> [20] <-> [30] -> NULL
+
+Allows insertion and deletion of any element at any location with ease.
+Useful when the number of elements is unpredictable, unlike arrays.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
