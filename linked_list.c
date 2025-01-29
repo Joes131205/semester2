@@ -253,3 +253,31 @@ void freeMemory()
         ptr = next;
     }
 }
+
+/*
+
+Practice Problem
+
+Suppose you are given a data that
+needed to be put to program,
+the size of the data is unknown,
+
+How would you approach it?
+
+Data Outline:
+struct Data {
+    char name[100];
+    int age;
+    char address[100];
+    char email[100];
+    char phone[100];
+};
+
+
+The linked list approach can be inefficient
+think of a better approach!
+
+Sort your linked list in ascending order based
+on age!
+
+*/

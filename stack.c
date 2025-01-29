@@ -63,3 +63,22 @@ void push(int val)
     new_node->next = head;
     head = new_node;
 }
+
+/*
+
+Practice Problem
+
+Suppose you have a game that stores user information such as
+- Username
+- Score
+- Level
+- Time played
+
+You want to implement a stack to store the user information.
+
+Create a queue to store the user information.
+
+How would you think Stack is better than Queue?
+
+
+*/

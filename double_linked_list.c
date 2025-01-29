@@ -203,3 +203,12 @@ void freeMemory()
         ptr = next;
     }
 }
+
+/*
+
+Practice Problem
+
+Same as the previous problem, but this time
+use doubly linked list!
+
+*/
