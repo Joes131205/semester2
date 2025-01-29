@@ -9,7 +9,7 @@ Example:
 10 -> 35 -> 26 -> NULL (LINKED LIST)
 
 Allows insertion and deletion of any element at any location
-Useful when the number of elements are unpredicatble, unlike arrays
+Useful when the number of elements are unpredictable, unlike arrays
 */
 
 #include <stdio.h>
