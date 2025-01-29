@@ -32,7 +32,7 @@ void pushHead(int val)
     {
         new_node->next = head;
         head->prev = new_node;
-        new_node = head;
+        head = new_node;
     }
 }
 void pushTail(int val)
@@ -92,22 +92,21 @@ void popHead()
     }
     else if (head == tail)
     {
-        Node *deleted = head;
+        free(head);
         head = NULL;
         tail = NULL;
-        deleted = NULL;
-        free(deleted);
         return;
     }
     else
     {
         Node *curr = head;
-        head->prev->next = NULL;
         head = head->next;
+        head->prev = NULL;
 
         curr->next = NULL;
-        curr = NULL;
+
         free(curr);
+        curr = NULL;
     }
 }
 void popTail()
@@ -118,23 +117,17 @@ void popTail()
     }
     else if (head == tail)
     {
-        Node *deleted = head;
+        free(head);
         head = NULL;
         tail = NULL;
-        deleted = NULL;
-        free(deleted);
         return;
     }
     else
     {
-        Node *curr = tail;
-
-        tail->prev->next = NULL;
+        Node *deleted = tail;
         tail = tail->prev;
-
-        curr->prev = NULL;
-        curr = NULL;
-        free(curr);
+        tail->next = NULL;
+        free(deleted);
     }
 }
 void popMid(int val)
@@ -145,12 +138,9 @@ void popMid(int val)
     }
     else if (head == tail)
     {
-        Node *deleted = head;
+        free(head);
         head = NULL;
         tail = NULL;
-        deleted = NULL;
-        free(deleted);
-        return;
     }
     else if (head->value == val)
     {
@@ -163,11 +153,11 @@ void popMid(int val)
     else
     {
         Node *ptr = head;
-        if (ptr != tail && ptr->value != val)
+        while (ptr != NULL && ptr->value != val)
         {
             ptr = ptr->next;
         }
-        if (ptr == tail)
+        if (ptr == NULL)
         {
             return;
         }
@@ -178,8 +168,8 @@ void popMid(int val)
         ptr->next = NULL;
         ptr->prev = NULL;
 
-        ptr = NULL;
         free(ptr);
+        ptr = NULL;
     }
 }
 
@@ -191,6 +181,7 @@ void printAll()
         printf("[%d] <-> ", ptr->value);
         ptr = ptr->next;
     }
+    printf("NULL\n");
 }
 
 void freeMemory()

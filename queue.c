@@ -56,7 +56,7 @@ void pop()
 
 void push(int val)
 {
-    Queue *new_node = create_node(val);
+    Queue *new_node = createQueue(val);
     if (tail == NULL)
     {
         head = tail = new_node;

@@ -59,7 +59,7 @@ void pop()
 
 void push(int val)
 {
-    Stack *new_node = create_node(val);
+    Stack *new_node = createStack(val);
     new_node->next = head;
     head = new_node;
 }

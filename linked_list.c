@@ -123,7 +123,7 @@ void pushMid(int val)
     else
     {
         Node *ptr = head;
-        while (ptr->value <= new_node->value)
+        while (ptr->next != NULL && ptr->next->value < new_node->value)
         {
             ptr = ptr->next;
         }
@@ -215,21 +215,22 @@ void popMid(int val)
     }
     else
     {
-        Node *deleted = head;
-        Node *ptr = deleted;
-        while (deleted != NULL && deleted->value != val)
+        Node *ptr = head;
+        while (ptr->next != NULL && ptr->next->value != val)
         {
-            ptr = deleted;
-            deleted = deleted->next;
+            ptr = ptr->next;
         }
-
-        if (!deleted)
+        if (ptr->next == NULL)
+        {
             return;
-
+        }
+        Node *deleted = ptr->next;
         ptr->next = deleted->next;
-        deleted->next = NULL;
+        if (deleted == tail)
+        {
+            tail = ptr;
+        }
         free(deleted);
-        deleted = NULL;
     }
 }
 
@@ -241,6 +242,7 @@ void printAll()
         printf("[%d] -> ", ptr->value);
         ptr = ptr->next;
     }
+    printf("NULL\n");
 }
 
 void freeMemory()

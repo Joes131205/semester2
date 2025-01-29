@@ -77,6 +77,7 @@ Node *hash_table[MAX_SIZE];
 Node *createNode(char word[])
 {
     Node *new_node = malloc(sizeof(Node));
+    new_node->word = malloc(strlen(word) + 1);
     strcpy(new_node->word, word);
     new_node->next = NULL;
     return new_node;
@@ -116,24 +117,17 @@ void insert(Node *node)
 void search(char word[])
 {
     int idx = hashing_function(word);
-    if (hash_table[idx] != NULL && strcmp(hash_table[idx]->word, word) == 0)
+    Node *ptr = hash_table[idx];
+    while (ptr != NULL)
     {
-        printf("%s found in hash table\n", word);
-        return;
-    }
-    else
-    {
-        Node *ptr = hash_table[idx];
-        while (ptr->next != NULL)
+        if (strcmp(ptr->word, word) == 0)
         {
-            if (strcmp(ptr->next->word, word) == 0)
-            {
-                printf("%s found in hash table\n", word);
-                return;
-            }
-            ptr = ptr->next;
+            printf("%s found in hash table\n", word);
+            return;
         }
+        ptr = ptr->next;
     }
+    printf("%s not found in hash table\n", word);
 }
 
 // Delete a value from the hash table
@@ -150,7 +144,7 @@ void delete(char word[])
     else
     {
         Node *temp = hash_table[idx];
-        while (temp->next != NULL)
+        while (temp != NULL && temp->next != NULL)
         {
             if (strcmp(temp->next->word, word) == 0)
             {
@@ -162,6 +156,7 @@ void delete(char word[])
             temp = temp->next;
         }
     }
+    printf("%s not found in hash table\n", word);
 }
 
 /*
